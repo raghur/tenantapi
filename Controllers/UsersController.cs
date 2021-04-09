@@ -55,5 +55,10 @@ namespace tenantapi.Controllers
         {
             return CreatedAtAction(nameof(GetUser), new { id = Guid.NewGuid() });
         }
+        [HttpDelete("{id}/roles")]
+        public IActionResult RemoveRoles(Guid id, [FromQuery]  string restype, [FromQuery]  string resid)
+        {
+            return Ok();
+        }
     }
 }

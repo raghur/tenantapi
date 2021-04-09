@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,10 +28,11 @@ namespace tenantapi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services.AddControllers().AddJsonOptions(options => 
+                        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+            services.AddSwaggerGen(c => 
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "tenantapi", Version = "v1" });
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "tenantapi", Version = "v1" });
             });
         }
 
@@ -41,7 +43,9 @@ namespace tenantapi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "tenantapi v1"));
+                app.UseSwaggerUI(
+                    c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "tenantapi v1")
+                );
             }
 
             app.UseHttpsRedirection();
