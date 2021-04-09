@@ -8,11 +8,11 @@ using Microsoft.Extensions.Logging;
 namespace tenantapi.Controllers
 {
     [Route("[controller]")]
-    public class TenantController : CoreApiBase
+    public class TenantsController : CoreApiBase
     {
-        private readonly ILogger<TenantController> _logger;
+        private readonly ILogger<TenantsController> _logger;
 
-        public TenantController(ILogger<TenantController> logger)
+        public TenantsController(ILogger<TenantsController> logger)
         {
             _logger = logger;
         }

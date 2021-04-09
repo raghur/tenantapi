@@ -1,6 +1,6 @@
 using System;
 
-namespace tenantapi.Controllers
+namespace tenantapi.ViewModels
 {
     public class InvitationRequest {
         public Guid resourceId  {get; set;}

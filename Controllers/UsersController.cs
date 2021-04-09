@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Logging;
 
 namespace tenantapi.Controllers
 {
-    [Route("[controller]")]
+    [Route("/users")]
     public class UserController : CoreApiBase
     {
         private readonly ILogger<UserController> _logger;
@@ -56,7 +57,7 @@ namespace tenantapi.Controllers
             return CreatedAtAction(nameof(GetUser), new { id = Guid.NewGuid() });
         }
         [HttpDelete("{id}/roles")]
-        public IActionResult RemoveRoles(Guid id, [FromQuery]  string restype, [FromQuery]  string resid)
+        public IActionResult RemoveRoles(Guid id, [BindRequired][FromQuery]  string restype, [BindRequired][FromQuery]  string resid)
         {
             return Ok();
         }

@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using tenantapi.ViewModels;
 
 namespace tenantapi.Controllers
 {
     [Route("[controller]")]
     public class InvitationsController: CoreApiBase {
-        private ILogger<UserController> _logger;
+        private ILogger<InvitationsController> _logger;
 
-        public InvitationsController(ILogger<UserController> logger)
+        public InvitationsController(ILogger<InvitationsController> logger)
         {
             _logger = logger;
         }
